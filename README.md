@@ -1,33 +1,14 @@
 # Real-Time-Threat-Detection
-This is a Python script that uses computer vision and machine learning techniques to detect weapons and unrecognized faces in a video stream. It also detects unusual sounds and sends email notifications with attached screenshots or audio files.
-<h1>Installation</h1>
-<p>To run this script, you need to have Python 3 installed on your system. You also need to install the following libraries:</p>
-<ul>
-<li>numpy</li>
-<li>OpenCV</li>
-<li>imutils</li>
-<li>smtplib</li>
-<li>datetime</li>
-<li>pygame</li>
-<li>sounddevice</li>
-<li>soundfile</li>
-<li>face_recognition</li>
-</ul>
-<p>'You can install these libraries using pip'</p>
-<h1>Usage</h1>
-<p>To use this script, you need to run it from the command line: <em>'python Detection.py'</em></p>
-<p>The script will start the camera and display the video stream on the screen. It will detect guns and unrecognized faces in the stream and play an alarm sound if any are detected. It will also send email notifications with attached screenshots or audio files.</p>
+This is a Python script that performs security surveillance using a camera. The code imports several libraries including NumPy, OpenCV (cv2), Imutils, pygame, sounddevice, and soundfile. It also imports the smtplib, datetime, and os libraries to send email notifications, obtain the current date and time, and access the operating system, respectively. TensorFlow (tf) is imported to perform face detection using a pre-trained model.
 
-<p>You can press the 'q' key to exit the script. You can also press the 's' key to stop the alarm sound if it's active.</p>
-<h1>Configuration</h1>
-<p>Before running the script, you need to configure some constants in the code:</p>
-<ul>
-<li>EMAIL_ADDRESS: The email address to use for sending notifications.</li>
-<li>EMAIL_PASSWORD: The password for the email address.</li>
-<li>KNOWN_FACES_DIR: The directory where known faces are stored.</li>
-<li>SOUND_THRESHOLD: The threshold for detecting unusual sounds.</li>
-</ul>
-<p>You also need to put some known faces in the KNOWN_FACES_DIR directory. Each face should be in a separate image file with the person's name as the file name (e.g. john.jpg).</p>
-<h1>License</h1>
-<p>This script is licensed under the MIT License. See the LICENSE file for details.</p>
+The script first sets the email address and password for the email account that will be used to send notifications, the directory where the known faces are stored, and the sound threshold for detecting unusual sounds. It then loads the cascade classifier for detecting guns and starts the camera.
 
+The script initializes variables for detecting guns and activating the alarm and loads the alarm sound. It then loads the TFLite model and gets the input and output tensors.
+
+Next, the script loads the known faces from the directory and stores their names in a list. It then loops over the frames from the camera, reads and resizes each frame, converts the frame to grayscale and detects guns using the cascade classifier. If a gun is detected, a flag is set, a rectangle is drawn around the gun, and an alarm is activated. If a gun is detected for more than 10 frames, a screenshot is taken, an email is sent with the screenshot attached, and the frames since detection is reset.
+
+The script then uses sound detection to detect unusual sounds and sends an email with an attached audio file if a sound is detected. The frames since detection is reset, and an alarm is activated if it is not already active.
+
+Finally, the script uses the TFLite model to detect faces, compares them to the known faces, and activates the alarm and sends an email if an unknown face is detected.
+
+There are no syntax errors in the script, but there may be logical or runtime errors that could arise when running the script.

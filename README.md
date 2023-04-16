@@ -1,51 +1,45 @@
-# Real Time Threat Detection
-This is a Python script that performs security surveillance using a camera. The code imports several libraries including NumPy, OpenCV (cv2), Imutils, pygame, sounddevice, and soundfile. It also imports the smtplib, datetime, and os libraries to send email notifications, obtain the current date and time, and access the operating system, respectively. TensorFlow (tf) is imported to perform face detection using a pre-trained model.
+# Security System with Face Recognition, Gun Detection, and Unusual Sound Detection
+This security system is designed to recognize both **Known faces** **(intended to detect and alert for specific individuals that may pose a threat, such as those on a watchlist or individuals with a history of criminal activity.)** and **Unknown faces (suitable for controlled environments where access is restricted to authorized personnel only)** allowing security personnel to take appropriate actions based on the detected individuals,  **Detect guns**, and **Identify unusual sounds**. When any of these events are detected, an alarm is triggered and an email notification is sent with relevant images or audio files.
 
-The script first sets the email address and password for the email account that will be used to send notifications, the directory where the known faces are stored, and the sound threshold for detecting unusual sounds. It then loads the cascade classifier for detecting guns and starts the camera.
-
-The script initializes variables for detecting guns and activating the alarm and loads the alarm sound. It then loads the TFLite model and gets the input and output tensors.
-
-Next, the script loads the known faces from the directory and stores their names in a list. It then loops over the frames from the camera, reads and resizes each frame, converts the frame to grayscale and detects guns using the cascade classifier. If a gun is detected, a flag is set, a rectangle is drawn around the gun, and an alarm is activated. If a gun is detected for more than 10 frames, a screenshot is taken, an email is sent with the screenshot attached, and the frames since detection is reset.
-
-The script then uses sound detection to detect unusual sounds and sends an email with an attached audio file if a sound is detected. The frames since detection is reset, and an alarm is activated if it is not already active.
-
-Finally, the script uses the TFLite model to detect faces, compares them to the known faces, and activates the alarm and sends an email if an unknown face is detected.
-
-<h2>Requirements</h2>
+<h2>Dependencies</h2>
+<p>To run the script, you need to install the following Python packages:</p>
 <ul>
-  <li>Python 3.6 or higher</li>
-  <li>OpenCV (cv2)imutils</li>
-  <li>imutils</li>
   <li>numpy</li>
-  <li>smtplib</li>
-  <li>datetime</li>
+  <li>opencv-python</li>
+  <li>imutils</li>
   <li>pygame</li>
+  <li>smtplib</li>
   <li>sounddevice</li>
-  <li>soundfile</li>
-  <li>tensorflow</li>
+  <li>scipy</li>
 </ul>
 
-<h2>Installation</h2>
-<ol>
-  <li>Clone the repository to your local machine.</li>
-  <li>Install the required packages by running pip install -r requirements.txt in the command line.</li>
-  <li>Download the cascade.xml file for detecting guns from <a href="https://drive.google.com/file/d/1Ndr_HFhxHB8mJ_uysdasXgfAKSQ2is4q/view">here.</a></li>
-  <li>Train your own face_detection.tflite file for face detection from <a href="https://www.tensorflow.org/js/models">here.</a></li>
-  <li>Put the cascade.xml and face_detection.tflite files in the same directory as the Python script.</li>
-</ol>
+<p>Install them using the following command:</p>
+`pip install numpy opencv-python imutils pygame smtplib sounddevice scipy`
 
-<h2>Usage</h2>
+<h2>Configuration</h2>
+<p>Before running the script, you need to configure the following variables:</p>
+<ul>
+  <li>`email`: Your Gmail address.</li>
+  <li>`password`: Your Gmail password.</li>
+  <li>`receiver_email`: The email address where notifications will be sent.</li>
+  <li>`haar_cascade_path`: The path to the Haar Cascade XML file for face detection.</li>
+  <li>`known_faces_model_path`: The path to the known faces model (pickle file).</li>
+  <li>`protoPath`: The path to the deploy.prototxt file for the DNN face detector.</li>
+  <li>`modelPath`: The path to the res10_300x300_ssd_iter_140000.caffemodel file for the DNN face detector.</li>
+  <li>`embedder_model_path`: The path to the openface_nn4.small2.v1.t7 file for the DNN face recognizer.</li>
+</ul>
+
+<h2>How It Works</h2>
+<p>The script continuously captures video frames from a camera and performs the following tasks:</p>
 <ol>
-  <li>Set the email address and password for the email account that will be used to send notifications by updating the EMAIL_ADDRESS and EMAIL_PASSWORD variables.</li>
-  <li>Put the known faces in the known_faces directory.</li>
-  <li>Run the Python script by typing python security_system.py in the command line.</li>
+  <li>Face Detection: The script detects faces using Haar Cascade and checks if they are known faces or unknown faces. Known faces are loaded from a pre-trained model, and their embeddings are compared to the detected face's embedding. If a known face is detected, it draws a green rectangle around it and displays the name. For unknown faces, a red rectangle is drawn.</li>
+  <li>Gun Detection: The script detects guns in the video frames. If a gun is detected, it draws a blue rectangle around it.</li>
+  <li>Unusual Sound Detection: The script continuously records audio and checks for unusual sounds. If an unusual sound is detected, it saves the audio clip as a WAV file.</li>
+  <li>Alarms and Email Notifications: When a known face, unknown face, gun, or unusual sound is detected, the script plays an alarm for 10 seconds and sends an email notification with an attached image or audio file.</li>
 </ol>
   
- <h2>Features</h2>
- <p>The security system has the following features:</p>
- <ul>
-  <li>Detects guns in the video feed using the Haar Cascade classifier and sends an email with a screenshot if a gun is detected.</li>
-  <li>Detects unusual sounds in the audio feed and sends an email with an attached audio file if a sound is detected.</li>
-  <li>Detects faces in the video feed using a TFLite model and compares them to the known faces. If an unknown face is detected, the system activates an alarm and sends an email with a screenshot.</li>
-</ul>
+ <h2>Running the Script</h2>
+ <p>To run the script, simply execute the Python file in your terminal or command prompt:</p>
+<p>` python security_system.py`</p>
+<p>The script will start capturing video and audio, and it will trigger alarms and send email notifications when events are detected.</p>
  

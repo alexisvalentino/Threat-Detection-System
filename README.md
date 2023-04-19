@@ -41,6 +41,5 @@ This security system is designed to recognize both **Known faces** **(intended t
   
  <h2>Running the Script</h2>
  <p>To run the script, simply execute the Python file in your terminal or command prompt:</p>
-<p>` python security_system.py`</p>
 <p>The script will start capturing video and audio, and it will trigger alarms and send email notifications when events are detected.</p>
  

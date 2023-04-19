@@ -23,6 +23,7 @@ This security system is designed to recognize both **Known faces** **(intended t
   <li>`password`: Your Gmail password.</li>
   <li>`receiver_email`: The email address where notifications will be sent.</li>
   <li>`haar_cascade_path`: The path to the Haar Cascade XML file for face detection.</li>
+  <li>`cascade.xml`: The path to the Haar Cascade XML file for weapons detection.</li>
   <li>`known_faces_model_path`: The path to the known faces model (pickle file).</li>
   <li>`protoPath`: The path to the deploy.prototxt file for the DNN face detector.</li>
   <li>`modelPath`: The path to the res10_300x300_ssd_iter_140000.caffemodel file for the DNN face detector.</li>

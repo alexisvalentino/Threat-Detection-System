@@ -1,4 +1,4 @@
-# Security System with Face Recognition, Gun Detection, and Unusual Sound Detection
+# Threat Detection Security System with Face Recognition, Gun Detection, and Audio Analysis Capabilities
 This security system is designed to recognize both **Known threats** **(Trained to detect and alert for specific individuals that may pose a threat, such as those on a watchlist or individuals with a history of criminal activity.)** and **Unidentified faces (Suitable for controlled environments where access is restricted to authorized personnel only)** allowing security personnel to take appropriate actions based on the detected individuals, It's also able to recognize **home owner faces and the system does not trigger an alarm.** It has also the capabilities of **Detecting guns**, and **Identifying unusual sounds**. When any of these events are detected, an alarm is triggered and an email notification is sent with relevant images or audio files.
 
 <h2>Dependencies</h2>

@@ -17,9 +17,9 @@ import pickle
 from imutils.video import VideoStream
 
 # Configuration
-email = "your_email@gmail.com"  # Replace with your email
-password = "your_password"  # Replace with your email password
-receiver_email = "alexis01valentino@gmail.com"
+email = ""  # Replace with your email
+password = ""  # Replace with your email password or app generated password
+receiver_email = "" # Replace with the recipients email
 haar_cascade_path = "C:/Users/ACER/Desktop/Real time threat detection/face_cascade.xml"  # Replace with the path to your haar cascade file
 known_faces_model_path = "C:/Users/ACER/Desktop/Real time threat detection/models/known_faces.pkl"  # Replace with the path to your known faces model
 homeowner_faces_model_path = "C:/Users/ACER/Desktop/Real time threat detection/models/home_owners.pkl"  # Replace with the path to your homeowner faces model
@@ -33,7 +33,7 @@ with open(homeowner_faces_model_path, 'rb') as f:
 
 # Initialize DNN face detector and recognizer
 protoPath = "C:/Users/ACER/Desktop/Real time threat detection/models/deploy.prototxt"
-modelPath = "C:/Users/ACER/Desktop/Real time threat detection/models/res10_300x300_ssd_iter_140000.caffemodel"
+modelPath = "C:/Users/ACER/Desktop/Real time threat detection/models/res10_300x300_ssd_iter_140000_fp16.caffemodel"
 detector = cv2.dnn.readNetFromCaffe(protoPath, modelPath)
 embedder = cv2.dnn.readNetFromTorch("C:/Users/ACER/Desktop/Real time threat detection/models/openface_nn4.small2.v1.t7")
 

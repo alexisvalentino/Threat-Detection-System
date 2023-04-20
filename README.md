@@ -21,7 +21,7 @@ This security system is designed to recognize both **Known threats** **(Trained 
   <li>openface_nn4.small2.v1.t7: a pre-trained deep neural network model for face recognition.</li>
   <li> known_faces.pkl: a pickle file containing a dictionary of known threats (name and embeddings).</li>
   <li>home_owners.pkl: a pickle file containing a dictionary of homeowner faces (name and embeddings).</li>
-  <li>deploy.prototxt and res10_300x300_ssd_iter_140000.caffemodel: pre-trained deep neural network models for face detection using OpenCV’s DNN module.</li>
+  <li>deploy.prototxt and res10_300x300_ssd_iter_140000_fp16.caffemodel: pre-trained deep neural network models for face detection using OpenCV’s DNN module.</li>
   <li>enter your email credentials and the paths to the above-mentioned files in the code.</li>
 </ul>
 
